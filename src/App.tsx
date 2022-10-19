@@ -6,6 +6,7 @@ import { AlertProvider } from './contexts/alertContext';
 import { GlobalStyle } from './style/reset';
 import Load from "./components/Load";
 import { lazy, Suspense } from "react";
+import SideBar from "./components/SideBar";
 
 const Loading = () => {
     return <Load />
@@ -30,6 +31,7 @@ function App() {
             <CssBaseline />
             <AlertProvider>
                 <BrowserRouter>
+                    <SideBar />
                     <Routes>
                         <Route path='/' element={<ListPage />} />
                         <Route path='/achievements' element={<AchievementsPage />} />

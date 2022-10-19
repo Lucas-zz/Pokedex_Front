@@ -1,9 +1,10 @@
-import { LoadingContainer } from "../style";
+import { Container } from "../style";
 
 export default function ListPage() {
     return (
-        <LoadingContainer>
+        <Container>
             <h1>This page will be available soon!</h1>
-        </LoadingContainer>
+            <div>POKÉDEX</div>
+        </Container>
     );
 }
