@@ -7,6 +7,7 @@ import { GlobalStyle } from './style/reset';
 import Load from "./components/Load";
 import { lazy, Suspense } from "react";
 import SideBar from "./components/SideBar";
+import styled from "styled-components";
 
 const Loading = () => {
     return <Load />
@@ -31,14 +32,16 @@ function App() {
             <CssBaseline />
             <AlertProvider>
                 <BrowserRouter>
-                    <SideBar />
-                    <Routes>
-                        <Route path='/' element={<ListPage />} />
-                        <Route path='/achievements' element={<AchievementsPage />} />
-                        <Route path='/pokedex' element={<PokedexPage />} />
-                        <Route path='/help' element={<HelpPage />} />
-                        <Route path='/configurations' element={<ConfigPage />} />
-                    </Routes>
+                    <MainContainer>
+                        <SideBar />
+                        <Routes>
+                            <Route path='/' element={<ListPage />} />
+                            <Route path='/achievements' element={<AchievementsPage />} />
+                            <Route path='/pokedex' element={<PokedexPage />} />
+                            <Route path='/help' element={<HelpPage />} />
+                            <Route path='/configurations' element={<ConfigPage />} />
+                        </Routes>
+                    </MainContainer>
                 </BrowserRouter>
                 <Alert />
             </AlertProvider>
@@ -47,3 +50,10 @@ function App() {
 }
 
 export default App;
+
+const MainContainer = styled.main`
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+`;

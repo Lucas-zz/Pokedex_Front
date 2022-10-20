@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Button = styled.button<any>`
-    width: 100%;
     height: 100%;
 
     border: none;
@@ -11,9 +10,6 @@ const Button = styled.button<any>`
     display: flex;
     align-items: center;
     color: #939393;
-
-    position: relative;
-    z-index: 2;
 
     padding: 30px 0;
 

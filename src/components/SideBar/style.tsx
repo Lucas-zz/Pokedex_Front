@@ -1,28 +1,30 @@
 import styled from "styled-components";
 
 const Container = styled.nav`
-    width: 285px;
+    width: 283px;
     min-height: 100vh;
 
-    padding-top: 15vh;
-    padding-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+const NavButtons = styled.div`
+    margin-left: 2vw;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
 
     display: flex;
     flex-direction: column;
 
-    position: absolute;
-    z-index: 1;
+    & > a {
+        padding-left: 10px;
+    }
 `;
 
-const NavButtons = styled.div`
-    width: 100%;
-
-    padding-left: 2.4vw;
-    padding-top: 8vh;
-    padding-bottom: 8vh;
-`
-
 const Logo = styled.div`
+    width: 283px;
+
     display: flex;
 
     padding-left: 2vw;
