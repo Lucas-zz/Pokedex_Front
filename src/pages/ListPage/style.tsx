@@ -86,12 +86,21 @@ const TotalEntries = styled.div`
     text-align: left;
 `;
 
-const PokeList = styled.div`
+const PokeList = styled.div<any>`
     width: 100%;
-    height: auto;
 
-    display: grid;
-    grid-template-columns: 240px 240px 240px;
+    ${props => props.message
+        ?`
+            width: 822px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        `
+        :`
+            display: grid;
+            grid-template-columns:240px 240px 240px;
+        `
+    };
 
     scroll-behavior: smooth;
     overflow-y: scroll;
@@ -116,13 +125,65 @@ const PokeList = styled.div`
     }
 
     @media (max-width: 1600px) {
-        grid-template-columns: 240px 240px;
+        ${props => props.message
+            ?`
+                width: 567px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            `
+            :`
+                display: grid;
+                grid-template-columns: 240px 240px;
+            `
+        };
     }
 
     @media (max-width: 1400px) {
         margin: 10px 0;
     }
 
+    @media (max-width: 900px) {
+        height: 480px;
+
+        ${props => props.message
+            ?`
+                width: 312px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            `
+            :`
+                display: grid;
+                grid-template-columns: 240px;
+            `
+        };
+    }
+`;
+
+const Message = styled.div`
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 2;
+    opacity: 1;
+
+    text-align: center;
+    
+    padding: 22px;
+    margin-top: 20px;
+
+    background-color: #eaeaea;
+
+    & > span {
+        font-weight: bold;
+        color: #00A7FD
+    }
+
+    @media (max-width: 900px) {
+        margin-top: 0;
+    }
 `;
 
 export {
@@ -132,4 +193,5 @@ export {
     TotalEntries,
     PokeList,
     SectionContainer,
+    Message
 }

@@ -27,6 +27,11 @@ const FilterContainer = styled.aside`
         margin-left: 0;
         margin-right: 0;
     }
+
+    @media (max-width: 900px) {
+        width: 332px;
+        height: 470px;
+    }
 `;
 
 const Subtitle = styled.span`
@@ -49,6 +54,10 @@ const Subtitle = styled.span`
 
 const SliderContainer = styled.div`
     margin: 0 40px;
+
+    @media (max-width: 900px) {
+
+    }
 `;
 
 const CustomSlider = styled(Slider)({
@@ -146,6 +155,10 @@ const GridOfTypes = styled.div`
     grid-template-columns: auto auto auto;
 
     margin-top: 10px;
+
+    @media (max-width: 900px) {
+        grid-template-columns: auto auto;
+    }
 `;
 
 export {
