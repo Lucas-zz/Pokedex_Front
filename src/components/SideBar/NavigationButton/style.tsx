@@ -25,6 +25,10 @@ const Button = styled.button<any>`
         opacity: 1;
 
         padding-top: 2.5px;
+    
+        @media(max-width: 650px) {
+            display: none;
+        }  
     }
 
     &:hover {

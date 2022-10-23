@@ -32,6 +32,14 @@ const FilterContainer = styled.aside`
         width: 332px;
         height: 470px;
     }
+
+    @media (max-width: 650px) {
+        align-self: center;
+        align-items: center;
+        background-color: inherit;
+
+        margin-top: calc(35vh * 10rem);
+    }
 `;
 
 const Subtitle = styled.span`

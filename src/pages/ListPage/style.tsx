@@ -25,6 +25,14 @@ const SectionContainer = styled.section`
 
         margin-top: 0px;
     }
+
+    @media (max-width: 650px) {
+        width: 75%;
+        height: 100%;
+
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 const ListContainer = styled.div`
@@ -42,6 +50,13 @@ const ListContainer = styled.div`
     @media (max-width: 1400px) {
         height: 50vh;
     }
+
+    @media (max-width: 650px) {
+        height: 100%;
+
+        align-items: flex-start;
+        justify-content: center;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -55,6 +70,11 @@ const TextContainer = styled.div`
     margin-left: 40px;
     
     @media (max-width: 1400px) {
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+
+    @media (max-width: 650px) {
         margin-top: 20px;
         margin-left: 40px;
     }
@@ -161,6 +181,15 @@ const PokeList = styled.div<any>`
             `
         };
     }
+    @media (max-width: 650px) {
+        width: 70vw;
+        height: 70vh;
+
+        margin: 10px 0px;
+
+        justify-content: center;
+    }
+
 `;
 
 const Message = styled.div`

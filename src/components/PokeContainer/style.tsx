@@ -6,6 +6,10 @@ const Container = styled.div`
     border-radius: 20px;
     background-color: #FFF;
     opacity: 1;
+
+    @media (max-width: 650px) {
+        width: 220px;
+    }
 `;
 
 const InfoContainer = styled.div`

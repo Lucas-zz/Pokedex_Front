@@ -7,6 +7,15 @@ const Container = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media(max-width: 650px) {
+        width: 72px;
+        
+        border-left: 1px solid #00C1FD;
+        justify-content: flex-start;
+
+        padding-top: 40px;
+    }
 `;
 
 const NavButtons = styled.div`
@@ -59,6 +68,10 @@ const LogoTextContainer = styled.div`
         color: #939393;
         opacity: 1;
     }
+
+    @media(max-width: 650px) {
+        display: none;
+    }
 `;
 
 const Version = styled.div`
@@ -72,6 +85,10 @@ const Version = styled.div`
     letter-spacing: 0px;
     color: #939393;
     opacity: 1;
+
+    @media(max-width: 650px) {
+        display: none;
+    }
 `;
 
 export {

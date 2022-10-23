@@ -15,6 +15,12 @@ const CheckboxContainer = styled.div`
     @media (max-width: 1400px) {
         margin: 5px 0;
     }
+
+    @media (max-width: 650) {
+        & >>> span {
+            font-size: 8px !important;
+        }
+    }
 `;
 
 const CustomLabel = styled(FormControlLabel)({
