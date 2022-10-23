@@ -10,6 +10,7 @@ import {
     PokeList, TextContainer,
     TotalEntries,
     SectionContainer,
+    Message
 } from "./style";
 
 export interface Pokemon {
@@ -26,9 +27,10 @@ export default function ListPage() {
     const [filteredTypes, setFilteredTypes] = useState<[]>([]);
     const [filteredPokemons, setFilteredPokemons] = useState<[]>([]);
     const [filterCheck, setFilterCheck] = useState(false)
+    const [hasMessage, setMessage] = useState(true);
     
     let { data } = useQuery(GET_POKEMONS_QUERY, {
-        variables: { first: 151 },
+        variables: { first: 1000 },
     });
 
     let pokemons = data?.pokemons;
@@ -37,6 +39,9 @@ export default function ListPage() {
         if (pokemons) {
             FILTER_BY_TYPE(pokemons, filteredTypes, setFilteredPokemons);
         }
+
+        if (filteredTypes?.length !== 0) setMessage(false);
+        if (filteredTypes?.length === 0) setMessage(true);
         
     }, [filterCheck, filteredTypes, pokemons]);
 
@@ -46,19 +51,22 @@ export default function ListPage() {
                 <TextContainer>
                     <PageTitle>Lista de pokémons</PageTitle>
                     <TotalEntries>Mostrando {filteredPokemons?.length} pokémons</TotalEntries>
-                </TextContainer>
-                <PokeList>
-                    {filteredPokemons?.map((pokemon: Pokemon) => (
-                        <PokeContainer
-                            key={pokemon?.id}
-                            id={pokemon?.id}
-                            name={pokemon?.name}
-                            image={pokemon?.image} 
-                            types={pokemon?.types}
-                            maxCP={pokemon?.maxCP}
-                            number={pokemon?.number}
-                        />
-                    ))}
+                </TextContainer>   
+                <PokeList message={hasMessage}>
+                    {hasMessage
+                        ? <Message>Selecione algum <span>TIPO</span> para que os <span>POKÉMONS</span> correspondentes a ele apareçam aqui!</Message>
+                        : filteredPokemons?.map((pokemon: Pokemon) => (
+                            <PokeContainer
+                                key={pokemon?.id}
+                                id={pokemon?.id}
+                                name={pokemon?.name}
+                                image={pokemon?.image} 
+                                types={pokemon?.types}
+                                maxCP={pokemon?.maxCP}
+                                number={pokemon?.number}
+                            />
+                        ))
+                    }    
                 </PokeList>
             </ListContainer>
             <PokeFilter

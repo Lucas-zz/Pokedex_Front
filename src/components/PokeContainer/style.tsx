@@ -20,7 +20,7 @@ const PokeImage = styled.img`
     width: 64px;
     height: 64px;
 
-    padding: 8px;
+    padding: 5px;
     object-fit: contain;
 
     display: flex;
