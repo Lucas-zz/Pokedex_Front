@@ -18,7 +18,7 @@ export default function PokeContainer(props: Pokemon) {
     return (
         <Container>
             <InfoContainer>
-                <PokeImage />
+                <PokeImage src={props.image}/>
                 <PokeInfo>
                     <PokeName>{props.name}</PokeName>
                     <PokeTypes>{props.types.join(', ')}</PokeTypes>

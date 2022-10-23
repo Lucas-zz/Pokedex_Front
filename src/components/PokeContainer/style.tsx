@@ -16,9 +16,12 @@ const InfoContainer = styled.div`
     align-items: center;
 `;
 
-const PokeImage = styled.div`
+const PokeImage = styled.img`
     width: 64px;
     height: 64px;
+
+    padding: 8px;
+    object-fit: contain;
 
     display: flex;
     align-items: center;
