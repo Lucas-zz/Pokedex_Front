@@ -3,7 +3,17 @@ import TypeSelection from "../TypeSelection";
 import { CustomSlider, FilterContainer, GridOfTypes, PokeTypes, SliderContainer, SliderValues, Subtitle, Value } from "./style";
 
 
-export default function PokeFilter({CPValue, setCPValue, filteredTypes, setFilteredTypes, filterCheck, setFilterCheck}: any) {
+export default function PokeFilter(
+    {
+        CPValue,
+        setCPValue,
+        filteredTypes,
+        setFilteredTypes,
+        filterCheck,
+        setFilterCheck,
+        minMaxCPValue,
+    }: any) {
+    
     const AllTypes = [
         'Normal',
         'Fire',
@@ -41,8 +51,8 @@ export default function PokeFilter({CPValue, setCPValue, filteredTypes, setFilte
                     value={CPValue}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
-                    max={3000}
-                    min={0}
+                    max={minMaxCPValue[1]}
+                    min={minMaxCPValue[0]}
                 />
             </SliderContainer>
             <SliderValues>

@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { Pokemon } from "../../pages/ListPage";
-import { Container, InfoContainer, PokeCP, PokeImage, PokeInfo, PokeName, PokeNumber, PokeTypes } from "./style";
-
-// type maxCP = Pick<Pokemon, 'maxCP'>;
+import {
+    Container,
+    InfoContainer,
+    PokeCP,
+    PokeImage,
+    PokeInfo,
+    PokeName,
+    PokeNumber,
+    PokeTypes
+} from "./style";
 
 export default function PokeContainer(props: Pokemon) {
 

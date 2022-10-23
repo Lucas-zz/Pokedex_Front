@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import PokeContainer from "../../components/PokeContainer";
 import PokeFilter from "../../components/PokeFilter";
 import { GET_POKEMONS_QUERY } from "../../services/getPokemons";
-import { FILTER_BY_TYPE } from "../../utils/filterUtils";
+import { FILTER_BY_MAX_CP, FILTER_BY_TYPE, GET_MIN_AND_MAX_CP } from "../../utils/filterUtils";
 import {
     ListContainer,
     PageTitle,
@@ -27,6 +27,7 @@ export default function ListPage() {
     const [filteredTypes, setFilteredTypes] = useState<[]>([]);
     const [filteredPokemons, setFilteredPokemons] = useState<[]>([]);
     const [filterCheck, setFilterCheck] = useState(false)
+    const [minMaxCPValue, setMinMaxCPValue] = useState([0, 3000]);
     const [hasMessage, setMessage] = useState(true);
     
     let { data } = useQuery(GET_POKEMONS_QUERY, {
@@ -34,16 +35,27 @@ export default function ListPage() {
     });
 
     let pokemons = data?.pokemons;
+    let filteredPokemonsByType: any = [];
+    let filteredPokemonsByMaxCP: any = [];
 
     useEffect(() => {
         if (pokemons) {
-            FILTER_BY_TYPE(pokemons, filteredTypes, setFilteredPokemons);
+            GET_MIN_AND_MAX_CP(pokemons, setMinMaxCPValue);
+        }
+    }, [pokemons])
+    
+
+    useEffect(() => {
+        if (pokemons) {
+            filteredPokemonsByType = FILTER_BY_TYPE(pokemons, filteredTypes);
+            filteredPokemonsByMaxCP = FILTER_BY_MAX_CP(filteredPokemonsByType, CPValue);
+            setFilteredPokemons(filteredPokemonsByMaxCP);
         }
 
         if (filteredTypes?.length !== 0) setMessage(false);
         if (filteredTypes?.length === 0) setMessage(true);
         
-    }, [filterCheck, filteredTypes, pokemons]);
+    }, [filterCheck, filteredTypes, pokemons, CPValue]);
 
     return (
         <SectionContainer>
@@ -54,7 +66,7 @@ export default function ListPage() {
                 </TextContainer>   
                 <PokeList message={hasMessage}>
                     {hasMessage
-                        ? <Message>Selecione algum <span>TIPO</span> para que os <span>POKÉMONS</span> correspondentes a ele apareçam aqui!</Message>
+                        ? <Message>Selecione algum <span>TIPO</span> para que os <span>POKÉMONS</span> correspondentes apareçam aqui!</Message>
                         : filteredPokemons?.map((pokemon: Pokemon) => (
                             <PokeContainer
                                 key={pokemon?.id}
@@ -76,6 +88,7 @@ export default function ListPage() {
                 setFilteredTypes={setFilteredTypes}
                 filterCheck={filterCheck}
                 setFilterCheck={setFilterCheck}
+                minMaxCPValue={minMaxCPValue}
             />
         </SectionContainer>
     );
