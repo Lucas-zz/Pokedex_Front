@@ -61,5 +61,7 @@ const MainContainer = styled.main`
         width: 90%;
         
         justify-content: space-between;
+
+        margin: 0 !important;
     }
 `;

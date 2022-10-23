@@ -10,7 +10,8 @@ const Container = styled.nav`
 
     @media(max-width: 650px) {
         width: 72px;
-        
+        max-height: 100vh;
+
         border-left: 1px solid #00C1FD;
         justify-content: flex-start;
 
@@ -28,6 +29,11 @@ const NavButtons = styled.div`
 
     & > a {
         padding-left: 10px;
+    }
+
+    @media(max-width: 650px) {
+        padding-top: 3vh;
+        padding-bottom: 3vh;
     }
 `;
 

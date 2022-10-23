@@ -81,6 +81,8 @@ const TextContainer = styled.div`
 `;
 
 const PageTitle = styled.div`
+    width: 100%;
+
     font-size: 35px;
     font-weight: bold;
     letter-spacing: 0;
@@ -91,6 +93,12 @@ const PageTitle = styled.div`
     
     @media (max-width: 1400px) {
         font-size: 24px;
+    }  
+
+    @media (max-width: 650) {
+        width: 50px !important;
+
+        font-size: 18px;
     }
 `;
 

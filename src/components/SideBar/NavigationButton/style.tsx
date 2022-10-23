@@ -70,8 +70,9 @@ const Button = styled.button<any>`
         }
     }
 
-
-    
+    @media (max-width: 650px) {
+        padding: 15px 0;
+    }
 `;
 
 export {

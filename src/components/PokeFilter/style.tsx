@@ -58,6 +58,10 @@ const Subtitle = styled.span`
     @media (max-width: 1400px) {
         margin: 0;
     }
+    
+    @media (max-width: 650) {
+        max-width: 40px;
+    }
 `;
 
 const SliderContainer = styled.div`
@@ -153,6 +157,10 @@ const PokeTypes = styled.div`
     @media (max-width: 1400px) {
         margin: 10px 0;
     }
+    
+    @media (max-width: 1400px) {
+        padding-right: 0;
+    }
 `;
 
 const GridOfTypes = styled.div`
@@ -165,6 +173,16 @@ const GridOfTypes = styled.div`
     margin-top: 10px;
 
     @media (max-width: 900px) {
+        margin: auto;
+        
+        grid-template-columns: auto auto;
+    }
+    
+    @media (max-width: 650) {
+        width: 80px;
+        
+        margin: auto;
+        
         grid-template-columns: auto auto;
     }
 `;
