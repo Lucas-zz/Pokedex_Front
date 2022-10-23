@@ -1,434 +1,74 @@
-import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 import PokeContainer from "../../components/PokeContainer";
-import TypeSelection from "../../components/TypeSelection";
+import PokeFilter from "../../components/PokeFilter";
+import { GET_POKEMONS_QUERY } from "../../services/getPokemons";
+import { FILTER_BY_TYPE } from "../../utils/filterUtils";
 import {
-    FilterContainer,
     ListContainer,
     PageTitle,
     PokeList, TextContainer,
     TotalEntries,
     SectionContainer,
-    Subtitle,
-    CustomSlider,
-    SliderContainer,
-    SliderValues,
-    Values,
-    PokeTypes,
-    GridOfTypes
 } from "./style";
 
 export interface Pokemon {
+    id: number
     name: string,
+    image: string
     types: string[],
     maxCP: number,
     number: string,
 }
 
 export default function ListPage() {
-    let pokemons = [
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 951,
-            number: '001',
-        },
-        {
-            name: 'Ivysaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 1483,
-            number: '002',
-        },
-        {
-            name: 'Bulbasaur',
-            types: ['Grass', 'Poison'],
-            maxCP: 2392,
-            number: '003',
-        },
-    ];
+    const [CPValue, setCPValue] = useState<number[]>([329, 2512]);
+    const [filteredTypes, setFilteredTypes] = useState<[]>([]);
+    const [filteredPokemons, setFilteredPokemons] = useState<[]>([]);
+    const [filterCheck, setFilterCheck] = useState(false)
+    
+    let { data } = useQuery(GET_POKEMONS_QUERY, {
+        variables: { first: 151 },
+    });
 
-    const AllTypes = [
-        'Normal',
-        'Fire',
-        'Fighting',
-        'Water',
-        'Flying',
-        'Grass',
-        'Poison',
-        'Eletric',
-        'Ground',
-        'Psychic',
-        'Rock',
-        'Ice',
-        'Bug',
-        'Dragon',
-        'Ghost',
-        'Dark',
-        'Steel',
-        'Fairy'
-    ]
+    let pokemons = data?.pokemons;
 
-    const [value, setValue] = useState<number[]>([329, 2512]);
-
-    const handleChange = (event: Event, newValue: number | number[]) => {
-        setValue(newValue as number[]);
-    };
+    useEffect(() => {
+        if (pokemons) {
+            FILTER_BY_TYPE(pokemons, filteredTypes, setFilteredPokemons);
+        }
+        
+    }, [filterCheck, filteredTypes, pokemons]);
 
     return (
         <SectionContainer>
             <ListContainer>
                 <TextContainer>
                     <PageTitle>Lista de pokémons</PageTitle>
-                    <TotalEntries>Mostrando {pokemons.length} pokémons</TotalEntries>
+                    <TotalEntries>Mostrando {filteredPokemons?.length} pokémons</TotalEntries>
                 </TextContainer>
                 <PokeList>
-                    {pokemons.map((pokemon: Pokemon) => (
+                    {filteredPokemons?.map((pokemon: Pokemon) => (
                         <PokeContainer
-                            name={pokemon.name}
-                            types={pokemon.types}
-                            maxCP={pokemon.maxCP}
-                            number={pokemon.number}
+                            key={pokemon?.id}
+                            id={pokemon?.id}
+                            name={pokemon?.name}
+                            image={pokemon?.image} 
+                            types={pokemon?.types}
+                            maxCP={pokemon?.maxCP}
+                            number={pokemon?.number}
                         />
                     ))}
                 </PokeList>
             </ListContainer>
-            <FilterContainer>
-                <TextContainer>
-                    <PageTitle>Filtro</PageTitle>
-                    <Subtitle>maxCP</Subtitle>
-                </TextContainer>
-                <SliderContainer>
-                    <CustomSlider
-                        getAriaLabel={() => 'maxCP range'}
-                        value={value}
-                        onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        max={3000}
-                        min={0}
-                    />
-                </SliderContainer>
-                <SliderValues>
-                    <Values>
-                        <span>{value[0]}</span>
-                    </Values>
-                    <Values>
-                        <span>{value[1]}</span>
-                    </Values>
-                </SliderValues>
-                <PokeTypes>
-                    <Subtitle>Tipos</Subtitle>
-                    <GridOfTypes>
-                        {AllTypes.map((type) =>
-                            <TypeSelection type={type} />
-                        )}
-                    </GridOfTypes>
-                </PokeTypes>
-            </FilterContainer>
+            <PokeFilter
+                CPValue={CPValue}
+                setCPValue={setCPValue}
+                filteredTypes={filteredTypes}
+                setFilteredTypes={setFilteredTypes}
+                filterCheck={filterCheck}
+                setFilterCheck={setFilterCheck}
+            />
         </SectionContainer>
     );
 }
