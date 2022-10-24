@@ -1,7 +1,9 @@
-export function FILTER_BY_TYPE(pokemons: [], filteredTypes: any): [] {
-    let filteredPokemonsByType: [] = [];
+import { Pokemon } from "../pages/ListPage";
+
+export function FILTER_BY_TYPE(pokemons: Pokemon[], filteredTypes: any): [] {
+    let filteredPokemonsByType: any = [];
     
-    const filterByTypeResults = pokemons.map((pokemon: any) => (
+    const filterByTypeResults = pokemons.map((pokemon: Pokemon) => (
         pokemon.types.filter((type: any) => filteredTypes.includes(type))
     ));
 
@@ -13,8 +15,8 @@ export function FILTER_BY_TYPE(pokemons: [], filteredTypes: any): [] {
     return filteredPokemonsByType;
 }
 
-export function FILTER_BY_MAX_CP(pokemons: any, CPValue: any) {
-    let filteredPokemonsByMaxCP = [];
+export function FILTER_BY_MAX_CP(pokemons: Pokemon[], CPValue: any) {
+    let filteredPokemonsByMaxCP: Pokemon[] = [];
 
     for (let i = 0; i < pokemons?.length; i++) {
         if (pokemons[i].maxCP >= CPValue[0] && pokemons[i].maxCP <= CPValue[1]) {
