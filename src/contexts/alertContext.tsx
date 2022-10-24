@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 interface AlertMessage {
-    type: "success" | "error";
+    type: "success" | "error" | "info";
     text: string;
 }
 
