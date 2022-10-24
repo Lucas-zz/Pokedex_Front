@@ -7,7 +7,8 @@ import { FILTER_BY_MAX_CP, FILTER_BY_TYPE, GET_MIN_AND_MAX_CP } from "../../util
 import {
     ListContainer,
     PageTitle,
-    PokeList, TextContainer,
+    PokeList,
+    TextContainer,
     TotalEntries,
     SectionContainer,
     Message

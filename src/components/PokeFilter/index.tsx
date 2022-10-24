@@ -1,6 +1,16 @@
-import { PageTitle, TextContainer } from "../../pages/ListPage/style";
 import TypeSelection from "../TypeSelection";
-import { CustomSlider, FilterContainer, GridOfTypes, PokeTypes, SliderContainer, SliderValues, Subtitle, Value } from "./style";
+import {
+    CustomSlider,
+    FilterContainer,
+    GridOfTypes,
+    PokeTypes,
+    SliderContainer,
+    SliderValues,
+    TextContainer,
+    PageTitle,
+    Subtitle,
+    Value
+} from "./style";
 
 
 export default function PokeFilter(

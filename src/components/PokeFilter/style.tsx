@@ -42,6 +42,49 @@ const FilterContainer = styled.aside`
     }
 `;
 
+const TextContainer = styled.div`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-top: 40px;
+    margin-left: 40px;
+    
+    @media (max-width: 1400px) {
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+
+    @media (max-width: 650px) {
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+`;
+
+const PageTitle = styled.div`
+    width: 100%;
+
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 0;
+    color: #333;
+    opacity: 1;
+
+    text-align: left;
+    
+    @media (max-width: 1400px) {
+        font-size: 24px;
+    }  
+
+    @media (max-width: 650) {
+        width: 50px !important;
+
+        font-size: 18px;
+    }
+`;
+
 const Subtitle = styled.span`
     width: auto;
 
@@ -189,6 +232,8 @@ const GridOfTypes = styled.div`
 
 export {
     FilterContainer,
+    TextContainer,
+    PageTitle,
     Subtitle,
     CustomSlider,
     SliderContainer,

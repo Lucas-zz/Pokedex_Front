@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.nav`
     width: 283px;
-    min-height: 100vh;
+    max-height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -21,8 +21,8 @@ const Container = styled.nav`
 
 const NavButtons = styled.div`
     margin-left: 2vw;
-    padding-top: 8vh;
-    padding-bottom: 8vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 
     display: flex;
     flex-direction: column;
@@ -34,6 +34,10 @@ const NavButtons = styled.div`
     @media(max-width: 650px) {
         padding-top: 3vh;
         padding-bottom: 3vh;
+
+        & > a {
+            padding-left: 8px;
+        }
     }
 `;
 

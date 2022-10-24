@@ -9,7 +9,7 @@ const SectionContainer = styled.section`
     margin-top: 50px;
 
     @media (max-width: 1400px) {
-        height: 100vh;
+        height: 100%;
 
         flex-direction: column-reverse;
         align-items: center;
@@ -56,6 +56,8 @@ const ListContainer = styled.div`
 
         align-items: flex-start;
         justify-content: center;
+
+        margin-right: 20px;
     }
 `;
 
@@ -76,7 +78,9 @@ const TextContainer = styled.div`
 
     @media (max-width: 650px) {
         margin-top: 20px;
-        margin-left: 40px;
+        margin-left: 5vw;
+
+        gap: 5px;
     }
 `;
 
@@ -96,9 +100,8 @@ const PageTitle = styled.div`
     }  
 
     @media (max-width: 650) {
-        width: 50px !important;
 
-        font-size: 18px;
+        font-size: 16px;
     }
 `;
 
@@ -132,6 +135,7 @@ const PokeList = styled.div<any>`
 
     scroll-behavior: smooth;
     overflow-y: scroll;
+    overflow-x: hidden;
 
     gap: 15px;
 

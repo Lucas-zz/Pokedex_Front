@@ -63,5 +63,8 @@ const MainContainer = styled.main`
         justify-content: space-between;
 
         margin: 0 !important;
+
+        overflow-x: hidden;
+        line-height: 1;
     }
 `;
