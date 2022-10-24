@@ -32,7 +32,7 @@ export default function PokeFilter(
         'Flying',
         'Grass',
         'Poison',
-        'Eletric',
+        'Electric',
         'Ground',
         'Psychic',
         'Rock',
