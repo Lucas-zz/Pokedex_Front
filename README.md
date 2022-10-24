@@ -35,7 +35,7 @@
 
 ## About
 
-<p>This project as a part of a coding challenge for an Entry-level Frontend role in <a href="https://www.voltbras.com.br/">Voltbras</a>.</p>
+<p>This project was a part of a coding challenge for an Entry-level Frontend role in <a href="https://www.voltbras.com.br/">Voltbras</a>.</p>
 <p>I had a really great time implementing this application. I hope that you, who's reading this right now, can also enjoy. 😁</p>
 
 ---
