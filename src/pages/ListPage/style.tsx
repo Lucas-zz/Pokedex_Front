@@ -51,10 +51,10 @@ const ListContainer = styled.div`
     }
 
     @media (max-width: 650px) {
-        height: 100%;
+        min-height: 100%;
 
         align-items: flex-start;
-        justify-content: center;
+        justify-content: flex-start;
 
         margin-right: 20px;
     }
@@ -176,8 +176,6 @@ const PokeList = styled.div<any>`
     }
 
     @media (max-width: 900px) {
-        height: 480px;
-
         ${props => props.message
             ?`
                 width: 312px;
@@ -194,11 +192,8 @@ const PokeList = styled.div<any>`
     }
     @media (max-width: 650px) {
         width: 70vw;
-        height: 70vh;
 
         margin: 10px 0px;
-
-        justify-content: center;
     }
 
 `;

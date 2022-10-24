@@ -40,12 +40,12 @@ export default function ListPage() {
         variables: { first: 5000 },
     });
 
-    if (error) {
-        setMessage({
-            type: 'error',
-            text: "Algo de errado acontenceu. Tente novamente em alguns momentos!"
-        });
-    }
+    // if (error) {
+    //     setMessage({
+    //         type: 'error',
+    //         text: "Algo de errado acontenceu. Tente novamente em alguns momentos!"
+    //     });
+    // }
 
     let pokemons: Pokemon[] = data?.pokemons;
     let filteredPokemonsByType: Pokemon[];

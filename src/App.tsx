@@ -55,6 +55,10 @@ const MainContainer = styled.main`
     width: 100vw;
 
     display: flex;
+
+    @media (max-width: 1400px) {
+        height: 100vh;
+    }
     
     @media (max-width: 650px) {
         height: 100%;
