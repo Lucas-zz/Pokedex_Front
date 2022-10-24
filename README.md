@@ -42,7 +42,7 @@
 
 ## How It Works
 
-<p>It's really simple, you just have to click <a href="https://pokedex-lucas-zz.vercel.app/" target="_blank">here</a> to open the deployed application and start using!</p>
+<p>You just have to click <a href="https://pokedex-lucas-zz.vercel.app/" target="_blank">here</a> to open the deployed application and start using! Yeah, it's that simple.</p>
 <p>After loading, you can check the boxes for each type on the filter to start seeing the pokémons being listed!</p>
 <p>You can also shorten your search even more by using the slider to show pokémons only in that range of Max CP.</p>
 <p>And that's it!</p>
