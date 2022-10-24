@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import PokeContainer from "../../components/PokeContainer";
 import PokeFilter from "../../components/PokeFilter";
+import useAlert from "../../hooks/useAlert";
 import { GET_POKEMONS_QUERY } from "../../services/getPokemons";
 import { FILTER_BY_MAX_CP, FILTER_BY_TYPE, GET_MIN_AND_MAX_CP } from "../../utils/filterUtils";
 import {
@@ -24,27 +25,37 @@ export interface Pokemon {
 }
 
 export default function ListPage() {
+    const { setMessage } = useAlert();
+
     const [CPValue, setCPValue] = useState<number[]>([329, 2512]);
     const [filteredTypes, setFilteredTypes] = useState<[]>([]);
-    const [filteredPokemons, setFilteredPokemons] = useState<[]>([]);
-    const [filterCheck, setFilterCheck] = useState(false)
-    const [minMaxCPValue, setMinMaxCPValue] = useState([0, 3000]);
-    const [hasMessage, setMessage] = useState(true);
+    const [filteredPokemons, setFilteredPokemons] = useState<Pokemon[]>([]);
+    const [filterCheck, setFilterCheck] = useState<Boolean>(false)
+    const [minMaxCPValue, setMinMaxCPValue] = useState<number[]>([0, 4000]);
+    const [hasMessage, setInitialMessage] = useState<Boolean>(true);
     
-    let { data } = useQuery(GET_POKEMONS_QUERY, {
-        variables: { first: 1000 },
+    setMessage(null);
+    
+    let { data, loading, error } = useQuery(GET_POKEMONS_QUERY, {
+        variables: { first: 5000 },
     });
 
-    let pokemons = data?.pokemons;
-    let filteredPokemonsByType: any = [];
-    let filteredPokemonsByMaxCP: any = [];
+    if (error) {
+        setMessage({
+            type: 'error',
+            text: "Algo de errado acontenceu. Tente novamente em alguns momentos!"
+        });
+    }
+
+    let pokemons: Pokemon[] = data?.pokemons;
+    let filteredPokemonsByType: Pokemon[];
+    let filteredPokemonsByMaxCP: Pokemon[];
 
     useEffect(() => {
         if (pokemons) {
             GET_MIN_AND_MAX_CP(pokemons, setMinMaxCPValue);
         }
-    }, [pokemons])
-    
+    }, [pokemons]);
 
     useEffect(() => {
         if (pokemons) {
@@ -53,8 +64,8 @@ export default function ListPage() {
             setFilteredPokemons(filteredPokemonsByMaxCP);
         }
 
-        if (filteredTypes?.length !== 0) setMessage(false);
-        if (filteredTypes?.length === 0) setMessage(true);
+        if (filteredTypes?.length !== 0) setInitialMessage(false);
+        if (filteredTypes?.length === 0) setInitialMessage(true);
         
     }, [filterCheck, filteredTypes, pokemons, CPValue]);
 
@@ -64,7 +75,7 @@ export default function ListPage() {
                 <TextContainer>
                     <PageTitle>Lista de pokémons</PageTitle>
                     <TotalEntries>Mostrando {filteredPokemons?.length} pokémons</TotalEntries>
-                </TextContainer>   
+                </TextContainer>
                 <PokeList message={hasMessage}>
                     {hasMessage
                         ? <Message>Selecione algum <span>TIPO</span> para que os <span>POKÉMONS</span> correspondentes apareçam aqui!</Message>
@@ -79,7 +90,7 @@ export default function ListPage() {
                                 number={pokemon?.number}
                             />
                         ))
-                    }    
+                    }
                 </PokeList>
             </ListContainer>
             <PokeFilter
