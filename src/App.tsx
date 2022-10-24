@@ -53,9 +53,12 @@ export default App;
 
 const MainContainer = styled.main`
     width: 100vw;
-    height: 100%;
 
     display: flex;
+    
+    @media (max-width: 650px) {
+        height: 100%;
+    }
 
     @media (max-width: 650px) {
         width: 90%;

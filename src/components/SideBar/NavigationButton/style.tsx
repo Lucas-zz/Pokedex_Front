@@ -11,7 +11,7 @@ const Button = styled.button<any>`
     align-items: center;
     color: #939393;
 
-    padding: 30px 0;
+    padding: 3vh 0;
 
     ${props => props.active
         ? 'color: #00A7FD; text-shadow: 0px 0px 6px #00C1FD80; font-weight: bold;'
