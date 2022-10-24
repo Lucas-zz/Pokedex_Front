@@ -92,7 +92,7 @@ $ npm install
 
 ```
 
-After this, you can start using the script below.
+After this, you can start using the scripts below.
 
 ---
 
